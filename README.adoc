@@ -40,7 +40,7 @@ For Maven users, in your pom.xml file, add between `<dependencies> ... </depende
 <dependency>
     <groupId>codes.sf</groupId>
     <artifactId>grpc-client-spring-boot</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
 
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'codes.sf', name: 'grpc-client-spring-boot', version: '0.0.1'
+    compile group: 'codes.sf', name: 'grpc-client-spring-boot', version: '0.0.2'
 }
 ```
 
