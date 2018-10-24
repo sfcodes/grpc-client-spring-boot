@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="grpc-client-spring-boot:main" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="codes.sf" external.system.module.type="sourceSet" external.system.module.version="" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/out/production/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/build/extracted-include-protos/main">
+      <sourceFolder url="file://$MODULE_DIR$/build/extracted-include-protos/main" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/build/extracted-protos/main">
+      <sourceFolder url="file://$MODULE_DIR$/build/extracted-protos/main" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/build/generated/source/proto/main/grpc" />
+    <content url="file://$MODULE_DIR$/build/generated/source/proto/main/java" />
+    <content url="file://$MODULE_DIR$/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:2.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:2.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-services:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-netty:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-context:5.0.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-aop:5.0.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-beans:5.0.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-expression:5.0.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-core:5.0.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-protobuf:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-stub:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java-util:3.5.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.re2j:re2j:1.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-protobuf-lite:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-core:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-http2:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-handler-proxy:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-jcl:5.0.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.5.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:20.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.api.grpc:proto-google-common-protos:1.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-context:1.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.opencensus:opencensus-contrib-grpc-metrics:0.12.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.opencensus:opencensus-api:0.12.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.errorprone:error_prone_annotations:2.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.mojo:animal-sniffer-annotations:1.17" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-http:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-handler:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-socks:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-transport:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.27.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-common:4.1.27.Final" level="project" />
+  </component>
+</module>

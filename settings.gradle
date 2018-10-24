@@ -1,0 +1,3 @@
+rootProject.name = 'grpc-client-spring-boot'
+
+enableFeaturePreview('STABLE_PUBLISHING')

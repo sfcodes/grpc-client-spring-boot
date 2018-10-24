@@ -1,0 +1,169 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.amkay:gradle-gitflow:0.2.0'
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'jacoco'
+    id 'idea'
+    id 'com.google.protobuf' version '0.8.6'
+    id 'maven-publish'
+    id 'signing'
+}
+
+apply plugin: 'com.github.amkay.gitflow'
+
+ext {
+    springBootVersion = '2.0.6.RELEASE'
+    grpcVersion = '1.15.0'
+    junitVersion = '4.12'
+    javafakerVersion = '0.16'
+    openpojoVersion = '0.8.10'
+}
+
+group 'codes.sf'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api group: 'org.springframework.boot', name: 'spring-boot', version: "${springBootVersion}"
+    api group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: "${springBootVersion}"
+    api group: 'io.grpc', name: 'grpc-services', version: "${grpcVersion}"
+    api group: 'io.grpc', name: 'grpc-netty', version: "${grpcVersion}"
+
+    annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: "${springBootVersion}"
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${springBootVersion}"
+    testCompile group: 'junit', name: 'junit', version: "${junitVersion}"
+    testCompile group: 'com.github.javafaker', name: 'javafaker', version: "${javafakerVersion}"
+    testCompile group: 'com.openpojo', name: 'openpojo', version: "${openpojoVersion}"
+}
+
+sourceSets {
+    test {
+        proto {
+            srcDir 'src/test/proto'
+        }
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.6.1'
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.15.1'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                grpc {}
+            }
+        }
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 1.0 // Require 100% code coverage
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifact(javadocJar) {
+                classifier = 'javadoc'
+            }
+            artifact(sourcesJar) {
+                classifier = 'sources'
+            }
+            pom {
+                name = 'Spring Boot module for gRPC client apps'
+                description = 'Allows Spring Boot-style configuration of gRPC stubs ' +
+                        'using properties and JavaConfig. Automatically registers ' +
+                        'gRPC stubs found on the classpath as beans with the ' +
+                        'ApplicationContext so they can be easily injected with ' +
+                        '@Autowired and other injection methods.'
+                url = 'https://github.com/sfcodes/grpc-client-spring-boot'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'sfcodes'
+                        name = 'Semyon Fishman'
+                        email = 's.fishman@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/sfcodes/grpc-client-spring-boot.git'
+                    developerConnection = 'scm:git:git@github.com:sfcodes/grpc-client-spring-boot.git'
+                    url = 'https://github.com/sfcodes/grpc-client-spring-boot'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'OSSRH'
+            url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.maven
+}
