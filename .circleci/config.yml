@@ -29,3 +29,6 @@ jobs:
 
       # run tests!
       - run: ./gradlew test
+
+      # Upload test reports to Codecov
+      - run: bash <(curl -s https://codecov.io/bash)
