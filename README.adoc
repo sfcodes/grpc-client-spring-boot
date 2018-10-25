@@ -1,3 +1,6 @@
+image:https://circleci.com/gh/sfcodes/grpc-client-spring-boot/tree/develop.svg?style=shield["CircleCI", link="https://circleci.com/gh/sfcodes/grpc-client-spring-boot/tree/develop"]
+image:https://codecov.io/gh/sfcodes/grpc-client-spring-boot/branch/develop/graph/badge.svg["Codecov", link="https://codecov.io/gh/sfcodes/grpc-client-spring-boot"]
+
 = gRPC Client for Spring Boot
 
 Spring Boot library for auto-configuring https://github.com/grpc/grpc-java[gRPC Java stubs].
