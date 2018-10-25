@@ -116,58 +116,60 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
-            artifact(javadocJar) {
-                classifier = 'javadoc'
-            }
-            artifact(sourcesJar) {
-                classifier = 'sources'
-            }
-            pom {
-                name = 'Spring Boot module for gRPC client apps'
-                description = 'Allows Spring Boot-style configuration of gRPC stubs ' +
-                        'using properties and JavaConfig. Automatically registers ' +
-                        'gRPC stubs found on the classpath as beans with the ' +
-                        'ApplicationContext so they can be easily injected with ' +
-                        '@Autowired and other injection methods.'
-                url = 'https://github.com/sfcodes/grpc-client-spring-boot'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
+if (project.hasProperty('sonatypeUsername') && project.hasProperty('sonatypePassword')) {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                artifact(javadocJar) {
+                    classifier = 'javadoc'
                 }
-                developers {
-                    developer {
-                        id = 'sfcodes'
-                        name = 'Semyon Fishman'
-                        email = 's.fishman@gmail.com'
-                    }
+                artifact(sourcesJar) {
+                    classifier = 'sources'
                 }
-                scm {
-                    connection = 'scm:git:git://github.com/sfcodes/grpc-client-spring-boot.git'
-                    developerConnection = 'scm:git:git@github.com:sfcodes/grpc-client-spring-boot.git'
+                pom {
+                    name = 'Spring Boot module for gRPC client apps'
+                    description = 'Allows Spring Boot-style configuration of gRPC stubs ' +
+                            'using properties and JavaConfig. Automatically registers ' +
+                            'gRPC stubs found on the classpath as beans with the ' +
+                            'ApplicationContext so they can be easily injected with ' +
+                            '@Autowired and other injection methods.'
                     url = 'https://github.com/sfcodes/grpc-client-spring-boot'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'sfcodes'
+                            name = 'Semyon Fishman'
+                            email = 's.fishman@gmail.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:git://github.com/sfcodes/grpc-client-spring-boot.git'
+                        developerConnection = 'scm:git:git@github.com:sfcodes/grpc-client-spring-boot.git'
+                        url = 'https://github.com/sfcodes/grpc-client-spring-boot'
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = 'OSSRH'
+                url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+                credentials {
+                    username sonatypeUsername
+                    password sonatypePassword
                 }
             }
         }
     }
 
-    repositories {
-        maven {
-            name = 'OSSRH'
-            url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
-            credentials {
-                username sonatypeUsername
-                password sonatypePassword
-            }
-        }
+    signing {
+        sign publishing.publications.maven
     }
-}
-
-signing {
-    sign publishing.publications.maven
 }
