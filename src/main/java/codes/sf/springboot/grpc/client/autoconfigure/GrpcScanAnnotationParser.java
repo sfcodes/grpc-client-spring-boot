@@ -2,7 +2,7 @@ package codes.sf.springboot.grpc.client.autoconfigure;
 
 import codes.sf.springboot.grpc.client.context.GrpcStubScanner;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
@@ -100,8 +100,8 @@ class GrpcScanAnnotationParser {
         String[] candidateNames = registry.getBeanDefinitionNames();
         for (String beanName : candidateNames) {
             BeanDefinition beanDef = registry.getBeanDefinition(beanName);
-            if (beanDef instanceof AnnotatedGenericBeanDefinition) {
-                AnnotationMetadata metadata = ((AnnotatedGenericBeanDefinition) beanDef).getMetadata();
+            if (beanDef instanceof AnnotatedBeanDefinition) {
+                AnnotationMetadata metadata = ((AnnotatedBeanDefinition) beanDef).getMetadata();
                 if (metadata.isAnnotated(annotationClass.getName())) {
                     AnnotationAttributes attributes = fromMap(metadata.getAnnotationAttributes(annotationClass.getName(), false));
                     attributes.put(DECLARING_CLASS_KEY, beanDef.getBeanClassName());
