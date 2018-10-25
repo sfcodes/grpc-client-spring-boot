@@ -1,6 +1,6 @@
 image:https://circleci.com/gh/sfcodes/grpc-client-spring-boot/tree/develop.svg?style=shield["CircleCI", link="https://circleci.com/gh/sfcodes/grpc-client-spring-boot/tree/develop"]
 image:https://codecov.io/gh/sfcodes/grpc-client-spring-boot/branch/develop/graph/badge.svg["Codecov", link="https://codecov.io/gh/sfcodes/grpc-client-spring-boot"]
-image:https://maven-badges.herokuapp.com/maven-central/sfcodes/grpc-client-spring-boot/badge.svg?style=flat["Maven Central", link="https://mvnrepository.com/artifact/codes.sf/grpc-client-spring-boot"]
+image:https://img.shields.io/maven-central/v/codes.sf/grpc-client-spring-boot.svg?label=Maven%20Central["Maven Central", link="https://search.maven.org/search?q=g:%22codes.sf%22%20AND%20a:%22grpc-client-spring-boot%22"]
 
 = gRPC Client for Spring Boot
 
